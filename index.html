@@ -3,28 +3,711 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tim Thuis - Coming Soon</title>
+<title>Tim Thuis — Artist</title>
+<meta name="description" content="Tim Thuis — Artist. Sculpturale spiegelobjecten over reflectie, perceptie en het zelfbeeld. Portfolio, agenda en contact.">
+<link rel="canonical" href="https://timthuis.nl/">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<meta property="og:title" content="Tim Thuis — Artist">
+<meta property="og:description" content="Sculpturale spiegelobjecten die spelen met reflectie, perceptie en het zelfbeeld.">
+<meta property="og:url" content="https://timthuis.nl/">
+<meta property="og:image" content="https://timthuis.nl/logo.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #111;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  :root{
+    --bg:#FAFAF9;
+    --ink:#141414;
+    --muted:#8A8A82;
+    --accent:#E8B923;
+    --line:#E7E5DE;
+    --surface:#F2F1EC;
+    --nav-h:64px;
   }
-  h1 {
-    color: #fff;
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-align: center;
-    padding: 0 1rem;
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  section{scroll-margin-top:var(--nav-h);}
+
+  a{color:inherit;text-decoration:none;}
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(250,250,249,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    height:var(--nav-h);
+  }
+
+  .nav-inner{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .nav-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:-0.01em;
+  }
+
+  .nav-links{
+    display:flex;
+    gap:36px;
+    list-style:none;
+  }
+
+  .nav-links a{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding:4px 0;
+  }
+
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--accent);
+    transition:width .25s ease;
+  }
+
+  .nav-links a:hover::after{width:100%;}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    width:28px;height:22px;
+    position:relative;
+  }
+  .nav-toggle span{
+    display:block;
+    position:absolute;
+    left:0;right:0;
+    height:2px;
+    background:var(--ink);
+    transition:all .25s ease;
+  }
+  .nav-toggle span:nth-child(1){top:0;}
+  .nav-toggle span:nth-child(2){top:10px;}
+  .nav-toggle span:nth-child(3){top:20px;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:calc(100vh - var(--nav-h));
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+
+  .rec-dot{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    animation:pulse 2s infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:.25;}
+  }
+
+  .hero h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(48px, 11vw, 128px);
+    line-height:0.95;
+    letter-spacing:-0.02em;
+  }
+
+  .hero-sub{
+    margin-top:24px;
+    font-size:clamp(15px,2vw,19px);
+    color:var(--muted);
+    max-width:520px;
+  }
+
+  .scan-line{
+    position:absolute;
+    left:0;right:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity:0.6;
+    animation:scan 5s linear infinite;
+  }
+
+  @keyframes scan{
+    0%{top:0%;}
+    100%{top:100%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .rec-dot,.scan-line{animation:none;}
+  }
+
+  /* ---------- SECOND NAV (sticky repeat after hero) ---------- */
+  .nav-repeat{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+
+  .nav-repeat .wrap{
+    display:flex;
+    gap:32px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .nav-repeat .wrap::-webkit-scrollbar{display:none;}
+
+  .nav-repeat a{
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .nav-repeat a:hover{color:var(--accent);}
+
+  /* ---------- SECTION SHARED ---------- */
+  .section{
+    padding:120px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .section-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:16px;
+  }
+
+  .section-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(32px,4vw,48px);
+    letter-spacing:-0.01em;
+    margin-bottom:48px;
+  }
+
+  /* ---------- OVER MIJ ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:64px;
+    align-items:start;
+  }
+
+  .portrait{
+    aspect-ratio:4/5;
+    background:var(--surface);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    text-align:center;
+    padding:16px;
+  }
+
+  .about-text p{
+    font-size:17px;
+    color:#3a3a37;
+    margin-bottom:20px;
+    max-width:560px;
+  }
+
+  .about-meta{
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .about-meta .row{
+    display:flex;
+    gap:16px;
+    font-size:13px;
+  }
+
+  .about-meta .row span:first-child{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--muted);
+    width:100px;
+    flex-shrink:0;
+  }
+
+  /* ---------- WERK ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+
+  .work-item{
+    aspect-ratio:1/1;
+    background:var(--surface);
+    border:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+  }
+
+  .work-item .ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  .work-info{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:14px 16px;
+    background:linear-gradient(180deg, transparent, rgba(250,250,249,0.96) 40%);
+    transform:translateY(100%);
+    transition:transform .3s ease;
+  }
+
+  .work-item:hover .work-info{transform:translateY(0);}
+
+  .work-info .t{font-size:14px;font-weight:600;}
+  .work-info .d{font-size:12px;color:var(--muted);font-family:'JetBrains Mono', monospace;margin-top:2px;}
+
+  /* ---------- AGENDA ---------- */
+  .agenda-list{display:flex;flex-direction:column;}
+
+  .agenda-row{
+    display:grid;
+    grid-template-columns:140px 1fr auto;
+    gap:24px;
+    align-items:baseline;
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .agenda-row:last-child{border-bottom:none;}
+
+  .agenda-date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--accent);
+  }
+
+  .agenda-title{font-size:17px;font-weight:600;}
+  .agenda-loc{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  .agenda-empty{
+    color:var(--muted);
+    font-size:15px;
+    padding:12px 0;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+
+  .contact-email{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(24px,3.4vw,36px);
+    font-weight:500;
+    word-break:break-word;
+  }
+
+  .contact-email:hover{color:var(--accent);}
+
+  .social-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .social-list a{
+    font-size:15px;
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .social-list a span:last-child{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  .social-list a:hover{color:var(--accent);}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:22px 0;
+    font-size:16px;
+    font-weight:600;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+  }
+
+  .faq-q .plus{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent);
+    transition:transform .25s ease;
+    font-size:18px;
+  }
+
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+
+  .faq-a p{
+    padding-bottom:22px;
+    color:var(--muted);
+    font-size:15px;
+    max-width:640px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  footer .f-name{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+  }
+
+  footer .f-links{
+    display:flex;
+    gap:24px;
+    font-size:13px;
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  footer .f-links a:hover{color:var(--accent);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;
+      top:var(--nav-h);
+      left:0;right:0;
+      background:var(--bg);
+      flex-direction:column;
+      gap:0;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .3s ease;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{max-height:400px;}
+    .nav-links li{width:100%;}
+    .nav-links a{
+      display:block;
+      padding:16px 32px;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-toggle{display:block;}
+
+    .about-grid{grid-template-columns:1fr;}
+    .portrait{max-width:220px;}
+
+    .work-grid{grid-template-columns:repeat(2,1fr);}
+
+    .agenda-row{grid-template-columns:1fr;gap:6px;}
+
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+
+    .section{padding:80px 0;}
+    .wrap{padding:0 20px;}
+    .nav-inner{padding:0 20px;}
+  }
+
+  @media (max-width:500px){
+    .work-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
-  <h1>website timthuis coming soon</h1>
+
+<!-- NAV (sticky, always visible) -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-name" style="display:flex;align-items:center;gap:10px;">
+      <img src="logo.jpg" alt="Tim Thuis logo" style="width:28px;height:28px;border-radius:4px;object-fit:cover;">
+      TIM THUIS
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#over-mij">Over mij</a></li>
+      <li><a href="#werk">Werk</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<section class="hero" id="top">
+  <div class="scan-line"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="rec-dot"></span> ATELIER UTRECHT — BESCHIKBAAR VOOR OPDRACHTEN</div>
+    <h1>TIM<br>THUIS</h1>
+    <p class="hero-sub">Artist. Sculpturale spiegelobjecten die spelen met reflectie, perceptie en het zelfbeeld — meticuleus berekend, machinaal gefabriceerd.</p>
+  </div>
+</section>
+
+<!-- SECOND NAV: sticky bar that stays visible under the hero as you scroll -->
+<nav class="nav-repeat">
+  <div class="wrap">
+    <a href="#over-mij">Over mij</a>
+    <a href="#werk">Werk</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#contact">Contact</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- OVER MIJ -->
+<section class="section" id="over-mij">
+  <div class="wrap">
+    <div class="section-label">001 — Over mij</div>
+    <div class="about-grid">
+      <div class="portrait"><img src="about-tim.jpg" alt="Tim Thuis" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="about-text">
+        <p>Tim Thuis is een kunstenaar met een brede fascinatie voor materiaalkunde, storytelling, digitale tools, elektronica en nieuwe fabricagetechnieken.</p>
+        <p>Door deze disciplines te combineren maakt hij visueel krachtige en tot in detail berekende sculpturen die nieuwsgierigheid, verwondering en een gevoel van ontdekking oproepen. Elk werk wordt in 3D gegenereerd voor precieze uitlijning en gerealiseerd met lasersnijden, CNC-frezen of 3D-printen — met oog voor nauwkeurigheid, herhaling en industriële precisie.</p>
+        <div class="about-meta">
+          <div class="row"><span>Opleiding</span><span>Kunstacademie Utrecht — Audiovisuele Media</span></div>
+          <div class="row"><span>Locatie</span><span>Den Bosch, Nederland</span></div>
+          <div class="row"><span>Status</span><span>Beschikbaar voor opdrachten</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERK -->
+<section class="section" id="werk">
+  <div class="wrap">
+    <div class="section-label">002 — Werk</div>
+    <h2 class="section-title">Selectie van werk</h2>
+    <div class="work-grid">
+      <div class="work-item">
+        <img src="work-search.jpg" alt="Search — spiegelsculptuur" style="width:100%;height:100%;object-fit:cover;">
+        <div class="work-info"><div class="t">Search</div><div class="d">Dec '25 — Ø 330 mm — plexiglas spiegel &amp; PLA, editie van 10</div></div>
+      </div>
+      <div class="work-item">
+        <img src="work-twist.jpg" alt="Twist — spiegelsculptuur" style="width:100%;height:100%;object-fit:cover;">
+        <div class="work-info"><div class="t">Twist</div><div class="d">Jan '25 — Ø 330 mm — plexiglas spiegel, PLA &amp; aluminium</div></div>
+      </div>
+      <div class="work-item">
+        <img src="work-depth.jpg" alt="Depth — spiegelsculptuur met LED" style="width:100%;height:100%;object-fit:cover;">
+        <div class="work-info"><div class="t">Depth</div><div class="d">Feb '26 — Ø 330 mm — plexiglas spiegel, PLA &amp; LED, editie van 10</div></div>
+      </div>
+      <div class="work-item">
+        <img src="work-center.jpg" alt="Center — spiegelsculptuur" style="width:100%;height:100%;object-fit:cover;">
+        <div class="work-info"><div class="t">Center</div><div class="d">Apr '26 — Ø 330 mm — plexiglas spiegel &amp; PLA, editie van 10</div></div>
+      </div>
+    </div>
+    <p style="margin-top:32px;color:var(--muted);font-size:14px;max-width:560px;">De centrale vorm is opgebouwd uit een spiegelend, reflecterend materiaal waardoor elk werk voortdurend de omgeving opneemt en weerspiegelt. Het ontbrekende hart van elk stuk nodigt uit om je eigen spiegelbeeld te confronteren, gefragmenteerd en steeds verschuivend.</p>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="section" id="agenda">
+  <div class="wrap">
+    <div class="section-label">003 — Agenda</div>
+    <h2 class="section-title">Aankomend</h2>
+    <div class="agenda-list">
+      <div class="agenda-row">
+        <div class="agenda-date">SEP 2026</div>
+        <div>
+          <div class="agenda-title">Titel expositie / event</div>
+          <div class="agenda-loc">Locatie, Stad</div>
+        </div>
+        <div class="mono" style="font-size:13px;color:var(--muted);">Info volgt</div>
+      </div>
+      <p class="agenda-empty">Meer data volgen binnenkort — houd deze pagina in de gaten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-label">004 — Contact</div>
+    <h2 class="section-title">Neem contact op</h2>
+    <div class="contact-grid">
+      <div>
+        <a class="contact-email" href="mailto:tim.thuis@gmail.com">tim.thuis@gmail.com</a>
+        <p style="margin-top:16px;color:var(--muted);font-size:14px;">Voor opdrachten, samenwerkingen of vragen over beschikbaar werk.</p>
+        <div class="about-meta" style="margin-top:28px;">
+          <div class="row"><span>Telefoon</span><span><a href="tel:+31615832991">+31 6 15 83 29 91</a></span></div>
+          <div class="row"><span>Locatie</span><span>Den Bosch, Nederland</span></div>
+        </div>
+      </div>
+      <div class="social-list">
+        <a href="#" target="_blank" rel="noopener">Instagram <span>@ — link volgt</span></a>
+        <a href="#" target="_blank" rel="noopener">TikTok <span>@ — link volgt</span></a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn <span>— link volgt</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-label">005 — FAQ</div>
+    <h2 class="section-title">Veelgestelde vragen</h2>
+    <div class="faq-item">
+      <button class="faq-q">Verkoop je origineel werk?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Ja. De meeste werken verschijnen in een genummerde editie van 10. Neem contact op via e-mail voor actuele beschikbaarheid en prijzen.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Doe je ook opdrachtwerk?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Ja, ik werk regelmatig aan opdrachten. Stuur een mail met je idee en ik denk graag mee over vorm, materiaal en uitvoering.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Hoe worden de werken gemaakt?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Elk stuk wordt eerst in 3D gemodelleerd voor precieze uitlijning, en vervolgens gerealiseerd met lasersnijden, CNC-frezen of 3D-printen — in materialen als plexiglas spiegel, PLA en aluminium.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Kan ik je atelier bezoeken?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Bezoeken in Den Bosch zijn op afspraak mogelijk. Neem contact op om iets in te plannen.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Waar exposeer je binnenkort?<span class="plus">+</span></button>
+      <div class="faq-a"><p>Check de agenda hierboven voor actuele exposities en events.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+    <div class="f-name">TIM THUIS</div>
+    <div class="f-links">
+      <a href="#top">Terug naar boven ↑</a>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.addEventListener('click', (e) => {
+    if(e.target.tagName === 'A'){
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
